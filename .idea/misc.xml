@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/20201tiimi0080/AppPlano/app/src/main/res/layout/activity_graficos.xml" value="0.358695652173913" />
         <entry key="..\:/Users/20201tiimi0080/AppPlano/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0080/AppPlano/app/src/main/res/layout/fragment_main_graficos.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0080/AppPlano/app/src/main/res/layout/fragment_perfil_view.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0080/AppPlano/app/src/main/res/xml/line_point_formatter_with_labels.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/20201tiimi0080/AppPlano/app/src/main/res/xml/line_point_formatter_with_labels_2.xml" value="0.358695652173913" />
       </map>
     </option>
   </component>
