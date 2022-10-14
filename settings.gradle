@@ -3,8 +3,7 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        //tentativa de adicionar o JitPack repository ao build file para Bar Chart
-        maven { url 'https://jitpack.io' }
+
     }
 }
 dependencyResolutionManagement {
