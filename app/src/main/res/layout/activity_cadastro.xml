@@ -9,11 +9,10 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
+        android:layout_width="128dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -28,7 +27,8 @@
         android:text="Nome Completo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/etCPF"
@@ -41,7 +41,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNomeCompleto" />
+        app:layout_constraintTop_toBottomOf="@+id/etNomeCompleto"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/etEmailCadastro"
@@ -54,7 +55,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCelular" />
+        app:layout_constraintTop_toBottomOf="@+id/etCelular"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/etSenhaCadastro"
@@ -66,7 +68,8 @@
         android:text="Senha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmailCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmailCadastro"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/etConfirmSenha"
@@ -79,7 +82,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btSalvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSenhaCadastro" />
+        app:layout_constraintTop_toBottomOf="@+id/etSenhaCadastro"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/etSexo"
@@ -92,7 +96,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNascimento" />
+        app:layout_constraintTop_toBottomOf="@+id/etNascimento"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/etNascimento"
@@ -104,7 +109,8 @@
         android:text="Data de Nascmento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCPF" />
+        app:layout_constraintTop_toBottomOf="@+id/etCPF"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/btSalvar"
@@ -126,5 +132,6 @@
         android:text="Celular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSexo" />
+        app:layout_constraintTop_toBottomOf="@+id/etSexo"
+        tools:ignore="TouchTargetSizeCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.viewpager2.widget.ViewPager2
+
  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -11,11 +14,11 @@
     <com.androidplot.xy.XYPlot
         android:id="@+id/plot"
         style="@style/APDefacto.Light"
-        ap:domainTitle="Categoria"
-        ap:lineLabelRotationBottom="-45"
-        ap:lineLabels="left|bottom"
-        ap:rangeTitle="Valor"
-        ap:title="Quanto foi destinado pra cada categoria"
+        app:domainTitle="Categoria"
+        app:lineLabelRotationBottom="-45"
+        app:lineLabels="left|bottom"
+        app:rangeTitle="Valor"
+        app:title="Quanto foi destinado pra cada categoria"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
