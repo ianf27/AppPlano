@@ -29,7 +29,7 @@ public class ScreenSlidePagerActivity extends FragmentActivity {
         setContentView(R.layout.activity_home);
 
         // Instantiate a ViewPager2 and a PagerAdapter.
-        viewPager = findViewById(R.id.frameLayout);
+        viewPager = findViewById(R.id.vpHome);
         pagerAdapter = new ScreenSlidePagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
     }

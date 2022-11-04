@@ -17,10 +17,13 @@
         app:menu="@menu/botton_nav_menu" />
 
     <FrameLayout
+        android:id="@+id/fragContainer"
         android:layout_width="409dp"
         android:layout_height="551dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintBottom_toTopOf="@+id/btNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 

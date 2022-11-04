@@ -2,7 +2,12 @@ package fracalossi.ian.appplano;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +21,15 @@ import android.view.ViewGroup;
  */
 public class HomeFragment extends Fragment {
 
+    public static HomeFragment newInstance() {
+        new HomeFragment();
+    }
 
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String mes = "mes";
+    private static final String ano = "ano";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -30,6 +38,7 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -40,11 +49,11 @@ public class HomeFragment extends Fragment {
      * @return A new instance of fragment HomeFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String param1, String param2) {
+    public static HomeFragment newInstance(String mes, String ano) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(mes, mes);
+        args.putString(ano, ano);
         fragment.setArguments(args);
         return fragment;
     }
@@ -53,8 +62,8 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getString(mes);
+            mParam2 = getArguments().getString(ano);
         }
     }
 
@@ -64,4 +73,31 @@ public class HomeFragment extends Fragment {
         return (ViewGroup) inflater.inflate(
                 R.layout.fragment_home, container, false);
     }
+
+    class SampleAdapter extends FragmentStateAdapter{
+
+        public SampleAdapter(@NonNull FragmentActivity fragmentActivity) {
+            super(fragmentActivity);
+        }
+
+        public SampleAdapter(@NonNull Fragment fragment) {
+            super(fragment);
+        }
+
+        public SampleAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+            super(fragmentManager, lifecycle);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            return null;
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
+    }
+
 }
