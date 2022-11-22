@@ -1,4 +1,4 @@
-package fracalossi.ian.appplano;
+package fracalossi.ian.appplano.Fragment;
 
 import android.os.Bundle;
 
@@ -12,6 +12,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import fracalossi.ian.appplano.R;
 
 
 /**

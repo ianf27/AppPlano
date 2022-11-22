@@ -1,8 +1,10 @@
-package fracalossi.ian.appplano;
+package fracalossi.ian.appplano.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import fracalossi.ian.appplano.R;
 
 public class CadastroActivity extends AppCompatActivity {
 

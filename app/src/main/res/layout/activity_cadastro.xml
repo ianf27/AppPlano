@@ -5,7 +5,7 @@
     android:id="@+id/imAvatar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastroActivity">
+    tools:context=".Activity.CadastroActivity">
 
     <ImageView
         android:id="@+id/imageView2"

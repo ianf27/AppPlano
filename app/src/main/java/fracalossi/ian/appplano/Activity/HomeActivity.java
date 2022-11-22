@@ -1,4 +1,4 @@
-package fracalossi.ian.appplano;
+package fracalossi.ian.appplano.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,27 +6,19 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.graphics.DashPathEffect;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.androidplot.util.PixelUtils;
-import com.androidplot.xy.CatmullRomInterpolator;
-import com.androidplot.xy.LineAndPointFormatter;
-import com.androidplot.xy.SimpleXYSeries;
-import com.androidplot.xy.XYGraphWidget;
-import com.androidplot.xy.XYPlot;
-import com.androidplot.xy.XYSeries;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.text.FieldPosition;
-import java.text.Format;
-import java.text.ParsePosition;
-import java.util.Arrays;
+import fracalossi.ian.appplano.Fragment.EditarPlanejamentoFragment;
+import fracalossi.ian.appplano.Fragment.HomeFragment;
+import fracalossi.ian.appplano.Fragment.PerfilFragment;
+import fracalossi.ian.appplano.Model.MainViewModel;
+import fracalossi.ian.appplano.R;
 
-public class MainActivity extends AppCompatActivity {
-
+public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
 

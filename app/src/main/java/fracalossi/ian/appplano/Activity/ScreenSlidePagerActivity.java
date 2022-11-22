@@ -1,10 +1,13 @@
-package fracalossi.ian.appplano;
+package fracalossi.ian.appplano.Activity;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
+
+import fracalossi.ian.appplano.Fragment.HomeFragment;
+import fracalossi.ian.appplano.R;
 
 public class ScreenSlidePagerActivity extends FragmentActivity {
     /**

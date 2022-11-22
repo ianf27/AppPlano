@@ -1,9 +1,11 @@
-package fracalossi.ian.appplano;
+package fracalossi.ian.appplano.Model;
 
 import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+
+import fracalossi.ian.appplano.R;
 
 public class MainViewModel extends AndroidViewModel {
 
