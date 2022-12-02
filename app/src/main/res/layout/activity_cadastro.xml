@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/etCPF"
+        android:id="@+id/etNewCPF"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginStart="32dp"
@@ -104,7 +104,7 @@
         android:text="Data de Nascmento"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCPF" />
+        app:layout_constraintTop_toBottomOf="@+id/etNewCPF" />
 
     <Button
         android:id="@+id/btSalvar"

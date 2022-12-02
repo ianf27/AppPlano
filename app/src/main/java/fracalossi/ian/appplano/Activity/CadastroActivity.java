@@ -37,7 +37,7 @@ public class CadastroActivity extends AppCompatActivity {
             // usuário clicou no botão cadastrar. Se o campo está vazio, exibimos uma mensagem para o
             // usuário indicando que ele não preencheu o campo e retornamos da função sem fazer
             // mais nada.
-            EditText etNewLogin =  findViewById(R.id.etLogin);
+            EditText etNewLogin =  findViewById(R.id.etNewCPF);
             final String newLogin = etNewLogin.getText().toString();
             if(newLogin.isEmpty()) {
                Toast.makeText(CadastroActivity.this, "Campo de login não preenchido", Toast.LENGTH_LONG).show();

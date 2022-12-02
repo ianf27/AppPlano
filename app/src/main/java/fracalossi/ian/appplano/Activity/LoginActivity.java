@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
          public void onClick(View v) {
 
             // Primeiro obtemos os dados de login e senha digitados pelo usuário
-            EditText etLogin = findViewById(R.id.etLogin);
+            EditText etLogin = findViewById(R.id.etNewCPF);
             final String login = etLogin.getText().toString();
 
             EditText etPassword = findViewById(R.id.etPassword);
