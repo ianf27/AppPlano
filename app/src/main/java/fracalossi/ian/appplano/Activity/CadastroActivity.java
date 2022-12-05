@@ -37,24 +37,61 @@ public class CadastroActivity extends AppCompatActivity {
             // usuário clicou no botão cadastrar. Se o campo está vazio, exibimos uma mensagem para o
             // usuário indicando que ele não preencheu o campo e retornamos da função sem fazer
             // mais nada.
+
+            EditText etNewNome =  findViewById(R.id.etNomeCompleto);
+            final String newNome = etNewNome.getText().toString();
+            if(newNome.isEmpty()) {
+               Toast.makeText(CadastroActivity.this, "Campo NOME não preenchido", Toast.LENGTH_LONG).show();
+               return;
+            }
+
             EditText etNewLogin =  findViewById(R.id.etNewCPF);
             final String newLogin = etNewLogin.getText().toString();
             if(newLogin.isEmpty()) {
-               Toast.makeText(CadastroActivity.this, "Campo de login não preenchido", Toast.LENGTH_LONG).show();
+               Toast.makeText(CadastroActivity.this, "Campo de CPF não preenchido", Toast.LENGTH_LONG).show();
                return;
             }
+
+            EditText etNewNascimento =  findViewById(R.id.etNascimento);
+            final String newNascimento = etNewNascimento.getText().toString();
+            if(newNascimento.isEmpty()) {
+               Toast.makeText(CadastroActivity.this, "Campo de DATA DE NASCIMENTO não preenchido", Toast.LENGTH_LONG).show();
+               return;
+            }
+
+            EditText etNewSexo =  findViewById(R.id.etSexo);
+            final String newSexo = etNewSexo.getText().toString();
+            if(newSexo.isEmpty()) {
+               Toast.makeText(CadastroActivity.this, "Campo SEXO não preenchido", Toast.LENGTH_LONG).show();
+               return;
+            }
+
+            EditText etNewCelular =  findViewById(R.id.etCelular);
+            final String newCelular = etNewCelular.getText().toString();
+            if(newCelular.isEmpty()) {
+               Toast.makeText(CadastroActivity.this, "Campo de CELULAR não preenchido", Toast.LENGTH_LONG).show();
+               return;
+            }
+
+            EditText etNewEmail =  findViewById(R.id.etEmailCadastro);
+            final String newEmail = etNewEmail.getText().toString();
+            if(newEmail.isEmpty()) {
+               Toast.makeText(CadastroActivity.this, "Campo de EMAIL não preenchido", Toast.LENGTH_LONG).show();
+               return;
+            }
+
 
             EditText etNewPassword =  findViewById(R.id.etPassword);
             final String newPassword = etNewPassword.getText().toString();
             if(newPassword.isEmpty()) {
-               Toast.makeText(CadastroActivity.this, "Campo de senha não preenchido", Toast.LENGTH_LONG).show();
+               Toast.makeText(CadastroActivity.this, "Campo de SENHA não preenchido", Toast.LENGTH_LONG).show();
                return;
             }
 
             EditText etNewPasswordCheck =  findViewById(R.id.etConfirmSenha);
             String newPasswordCheck = etNewPasswordCheck.getText().toString();
             if(newPasswordCheck.isEmpty()) {
-               Toast.makeText(CadastroActivity.this, "Campo de checagem de senha não preenchido", Toast.LENGTH_LONG).show();
+               Toast.makeText(CadastroActivity.this, "Campo de CHECAGEM DE SENHA não preenchido", Toast.LENGTH_LONG).show();
                return;
             }
 
