@@ -30,12 +30,18 @@ public class ProductsRepository {
      * @param newPassword a senha do novo usuário
      * @return true se o usuário foi cadastrado e false caso contrário
      */
-    public boolean register(String newLogin, String newPassword) {
+    public boolean register(String newNome, String newSobrenome, String newLogin, String newNascimento, String newSexo, String newCelular, String newEmail, String newPassword) {
 
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
         HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "registrar.php", "POST", "UTF-8");
-        httpRequest.addParam("novo_login", newLogin);
         httpRequest.addParam("nova_senha", newPassword);
+        httpRequest.addParam("novo_login", newLogin);
+        httpRequest.addParam("novo_nome", newNome);
+        httpRequest.addParam("novo_sobrenome", newSobrenome);
+        httpRequest.addParam("novo_nascimento", newNascimento);
+        httpRequest.addParam("novo_sexo", newSexo);
+        httpRequest.addParam("novo_celular", newCelular);
+        httpRequest.addParam("novo_email", newEmail);
 
         String result = "";
         try {
@@ -371,7 +377,7 @@ public class ProductsRepository {
                 // que os dados trafeguem mais rápido.
                 String name = jsonObject.getString("nome");
                 String price = jsonObject.getString("preco");
-                String description = jsonObject.getString("descricao");
+                String categoria = jsonObject.getString("categoria");
                 String createdBy = jsonObject.getString("criado_por");
                 String createdAt = jsonObject.getString("criado_em");
 
@@ -380,7 +386,7 @@ public class ProductsRepository {
                 p.name = name;
                 p.id = id;
                 p.price = price;
-                p.description = description;
+                p.categoria = categoria;
                 p.createdBy = createdBy;
                 p.createdAt = createdAt;
 

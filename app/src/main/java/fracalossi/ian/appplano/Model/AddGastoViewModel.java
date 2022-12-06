@@ -6,23 +6,29 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+public class AddGastoViewModel extends AndroidViewModel {
 
-public class CadastroViewModel extends AndroidViewModel {
-    public CadastroViewModel(@NonNull Application application) {
+    public AddGastoViewModel(@NonNull Application application) {
         super(application);
     }
 
     /**
-     * Método que cria e executa uma requisição ao servidor web para adicionar um novo usuário
+     * Método que cria e executa uma requisição ao servidor web para adicionar um novo produto no
      * na base de dados do servidor
-     * @param newLogin login do usuário
-     * @param newPassword senha do usuário
+     * @param name nome do produto
+     * @param price preço do produto
+     * @param  createdAt quando o produto foi criado
+     * @param categoria id da categoria do produto
      * @return um LiveData que vai conter a resposta do servidor quando esta estiver disponível
      */
-    public LiveData<Boolean> register(String newNome, String newSobrenome, String newLogin, String newNascimento, String newSexo, String newCelular, String newEmail, String newPassword) {
+    public LiveData<Boolean> addProduct(String name, String price, String createdAt, String categoria) {
 
         // Cria um container do tipo MutableLiveData (um LiveData que pode ter seu conteúdo alterado).
         MutableLiveData<Boolean> result = new MutableLiveData<>();
@@ -34,7 +40,6 @@ public class CadastroViewModel extends AndroidViewModel {
         // Executa a nova linha de execução. Dentro dessa linha, iremos realizar as requisições ao
         // servidor web.
         executorService.execute(new Runnable() {
-
             /**
              * Tudo o que colocármos dentro da função run abaixo será executada dentro da nova linha
              * de execução.
@@ -46,10 +51,10 @@ public class CadastroViewModel extends AndroidViewModel {
                 // métodos que se comunicam com o servidor web.
                 ProductsRepository productsRepository = new ProductsRepository(getApplication());
 
-                // O método login envia os dados de novo usuário ao servidor. Ele retorna
-                // um booleano indicando true caso o cadastro de novo usuário tenha sido feito com sucesso e false
+                // O método addProduct envia os dados de um novo produto ao servidor. Ele retorna
+                // um booleano indicando true caso o produto tenha sido cadastrado e false
                 // em caso contrário
-                boolean b = productsRepository.register(newNome, newSobrenome, newLogin, newNascimento, newSexo, newCelular, newEmail, newPassword);
+                boolean b = productsRepository.addProduct(name, price, createdAt, categoria);
 
                 // Aqui postamos o resultado da operação dentro do LiveData. Quando fazemos isso,
                 // quem estiver observando o LiveData será avisado de que o resultado está disponível.

@@ -60,44 +60,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPrice" />
 
-    <RadioButton
-        android:id="@+id/radioButton"
-        android:layout_width="70dp"
-        android:layout_height="44dp"
+    <RadioGroup
+        android:id="@+id/rbgCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Fixo"
+        android:layout_marginTop="11dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDate" />
+        app:layout_constraintTop_toBottomOf="@+id/etDate">
 
-    <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="123dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Investimento"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton2" />
+        <RadioButton
+            android:id="@+id/rbFixo"
+            android:layout_width="70dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Fixo" />
 
-    <RadioButton
-        android:id="@+id/radioButton2"
-        android:layout_width="93dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Variável"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+        <RadioButton
+            android:id="@+id/rbInvestimento"
+            android:layout_width="123dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Investimento" />
 
-    <RadioButton
-        android:id="@+id/radioButton4"
-        android:layout_width="78dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Lazer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton3" />
+        <RadioButton
+            android:id="@+id/rbVariavel"
+            android:layout_width="93dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Variável" />
+
+        <RadioButton
+            android:id="@+id/rbLazer"
+            android:layout_width="78dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Lazer" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

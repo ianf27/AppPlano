@@ -3,16 +3,26 @@ package fracalossi.ian.appplano.Fragment;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.paging.PagingData;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import fracalossi.ian.appplano.Adapter.MyAdapter;
+import fracalossi.ian.appplano.Adapter.ProductComparator;
+import fracalossi.ian.appplano.Model.HomeViewModel;
 import fracalossi.ian.appplano.R;
 
 
@@ -74,6 +84,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         return (ViewGroup) inflater.inflate(
                 R.layout.fragment_home, container, false);
+    }
+
+    // FAZER ON VIEW CREATED
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
     }
 
     class SampleAdapter extends FragmentStateAdapter{
