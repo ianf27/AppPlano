@@ -7,7 +7,7 @@
     tools:context=".Activity.AddGastoActivity">
 
     <Button
-        android:id="@+id/btnAddProduct"
+        android:id="@+id/btnAddGasto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

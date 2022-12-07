@@ -42,14 +42,14 @@ public class CadastroViewModel extends AndroidViewModel {
             @Override
             public void run() {
 
-                // Criamos uma instância de ProductsRepository. É dentro dessa classe que estão os
+                // Criamos uma instância de GastosRepository. É dentro dessa classe que estão os
                 // métodos que se comunicam com o servidor web.
-                ProductsRepository productsRepository = new ProductsRepository(getApplication());
+                GastosRepository gastosRepository = new GastosRepository(getApplication());
 
                 // O método login envia os dados de novo usuário ao servidor. Ele retorna
                 // um booleano indicando true caso o cadastro de novo usuário tenha sido feito com sucesso e false
                 // em caso contrário
-                boolean b = productsRepository.register(newNome, newSobrenome, newLogin, newNascimento, newSexo, newCelular, newEmail, newPassword);
+                boolean b = gastosRepository.register(newNome, newSobrenome, newLogin, newNascimento, newSexo, newCelular, newEmail, newPassword);
 
                 // Aqui postamos o resultado da operação dentro do LiveData. Quando fazemos isso,
                 // quem estiver observando o LiveData será avisado de que o resultado está disponível.

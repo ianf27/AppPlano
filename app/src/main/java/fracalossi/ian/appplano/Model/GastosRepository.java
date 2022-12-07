@@ -17,10 +17,10 @@ import fracalossi.ian.appplano.Util.Config;
 import fracalossi.ian.appplano.Util.HttpRequest;
 import fracalossi.ian.appplano.Util.Util;
 
-public class ProductsRepository {
+public class GastosRepository {
 
     Context context;
-    public ProductsRepository(Context context) {
+    public GastosRepository(Context context) {
         this.context = context;
     }
 
@@ -33,7 +33,7 @@ public class ProductsRepository {
     public boolean register(String newNome, String newSobrenome, String newLogin, String newNascimento, String newSexo, String newCelular, String newEmail, String newPassword) {
 
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "registrar.php", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.GASTO_APP_URL + "registrar.php", "POST", "UTF-8");
         httpRequest.addParam("nova_senha", newPassword);
         httpRequest.addParam("novo_login", newLogin);
         httpRequest.addParam("novo_nome", newNome);
@@ -96,7 +96,7 @@ public class ProductsRepository {
     public boolean login(String login, String password) {
 
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "login.php", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.GASTO_APP_URL + "login.php", "POST", "UTF-8");
         httpRequest.setBasicAuth(login, password);
 
         String result = "";
@@ -150,7 +150,7 @@ public class ProductsRepository {
      * @param imgLocation endereço do arquivo que contém a imagem do produto
      * @return true se o produto foi cadastrado junto ao servidor, false caso contrário
      */
-    public boolean addProduct(String name, String price, String description, String imgLocation) {
+    public boolean addGasto(String name, String price, String description, String imgLocation) {
 
         // Para cadastrar um produto, é preciso estar logado. Então primeiro otemos o login e senha
         // salvos na app.
@@ -158,7 +158,7 @@ public class ProductsRepository {
         String password = Config.getPassword(context);
 
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "criar_produto.php", "POST", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.GASTO_APP_URL + "criar_produto.php", "POST", "UTF-8");
         httpRequest.addParam("nome", name);
         httpRequest.addParam("preco", price);
         httpRequest.addParam("descricao", description);
@@ -193,7 +193,7 @@ public class ProductsRepository {
             // Fecha a conexão com o servidor web.
             httpRequest.finish();
 
-            Log.i("HTTP ADD PRODUCT RESULT", result);
+            Log.i("HTTP ADD GASTO RESULT", result);
 
             // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
             // monta internamente uma estrutura de dados similar ao dicionário em python.
@@ -221,10 +221,10 @@ public class ProductsRepository {
      * @param offSet a posição a partir da qual a página de produtos deve começar
      * @return lista de produtos
      */
-    public List<Product> loadProducts(Integer limit, Integer offSet) {
+    public List<Gasto> loadGastos(Integer limit, Integer offSet) {
 
         // cria a lista de produtos incicialmente vazia, que será retornada como resultado
-        List<Product> productsList = new ArrayList<>();
+        List<Gasto> gastoList = new ArrayList<>();
 
         // Para obter a lista de produtos é preciso estar logado. Então primeiro otemos o login e senha
         // salvos na app.
@@ -232,7 +232,7 @@ public class ProductsRepository {
         String password = Config.getPassword(context);
 
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL +"pegar_produtos.php", "GET", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.GASTO_APP_URL +"pegar_produtos.php", "GET", "UTF-8");
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
 
@@ -268,7 +268,7 @@ public class ProductsRepository {
             // Fecha a conexão com o servidor web.
             httpRequest.finish();
 
-            Log.i("HTTP PRODUCTS RESULT", result);
+            Log.i("HTTP GASTO RESULT", result);
 
             // A classe JSONObject recebe como parâmetro do construtor uma String no formato JSON e
             // monta internamente uma estrutura de dados similar ao dicionário em python.
@@ -289,21 +289,21 @@ public class ProductsRepository {
                 for(int i = 0; i < jsonArray.length(); i++) {
 
                     // Obtemos o JSONObject referente a um produto
-                    JSONObject jProduct = jsonArray.getJSONObject(i);
+                    JSONObject jGasto = jsonArray.getJSONObject(i);
 
                     // Obtemos os dados de um produtos via JSONObject
-                    String pid = jProduct.getString("id");
-                    String name = jProduct.getString("nome");
-                    String price = jProduct.getString("preco");
+                    String pid = jGasto.getString("id");
+                    String name = jGasto.getString("nome");
+                    String price = jGasto.getString("preco");
 
-                    // Criamo um objeto do tipo Product para guardar esses dados
-                    Product product = new Product();
-                    product.id = pid;
-                    product.name = name;
-                    product.price = price;
+                    // Criamo um objeto do tipo Gasto para guardar esses dados
+                    Gasto gasto = new Gasto();
+                    gasto.id = pid;
+                    gasto.name = name;
+                    gasto.price = price;
 
-                    // Adicionamos o objeto product na lista de produtos
-                    productsList.add(product);
+                    // Adicionamos o objeto gasto na lista de produtos
+                    gastoList.add(gasto);
                 }
             }
         } catch (IOException e) {
@@ -313,15 +313,15 @@ public class ProductsRepository {
             Log.e("HTTP RESULT", result);
         }
 
-        return productsList;
+        return gastoList;
     }
 
     /**
      * Método que cria uma requisição HTTP para obter os detalhes de um produto junto ao servidor web.
      * @param id id do produto que se deseja obter os detalhes
-     * @return objeto do tipo product contendo os detalhes do produto
+     * @return objeto do tipo gasto contendo os detalhes do produto
      */
-    Product loadProductDetail(String id) {
+    Gasto loadGastoDetail(String id) {
 
         // Para obter a lista de produtos é preciso estar logado. Então primeiro otemos o login e senha
         // salvos na app.
@@ -329,7 +329,7 @@ public class ProductsRepository {
         String password = Config.getPassword(context);
 
         // Cria uma requisição HTTP a adiona o parâmetros que devem ser enviados ao servidor
-        HttpRequest httpRequest = new HttpRequest(Config.PRODUCTS_APP_URL + "pegar_detalhes_produto.php", "GET", "UTF-8");
+        HttpRequest httpRequest = new HttpRequest(Config.GASTO_APP_URL + "pegar_detalhes_produto.php", "GET", "UTF-8");
         httpRequest.addParam("id", id);
 
         // Para esta ação, é preciso estar logado. Então na requisição HTTP setamos o login e senha do
@@ -369,7 +369,7 @@ public class ProductsRepository {
             int success = jsonObject.getInt("sucesso");
 
             // Se sucesso igual a 1, os detalhes do produto são obtidos da String JSON e um objeto
-            // do tipo Product é criado para guardar esses dados
+            // do tipo Gasto é criado para guardar esses dados
             if(success == 1) {
 
                 // obtém os dados detalhados do produto. A imagem não vem junto. Ela é obtida
@@ -381,8 +381,8 @@ public class ProductsRepository {
                 String createdBy = jsonObject.getString("criado_por");
                 String createdAt = jsonObject.getString("criado_em");
 
-                // Cria um objeto Product e guarda os detalhes do produto dentro dele.
-                Product p = new Product();
+                // Cria um objeto Gasto e guarda os detalhes do produto dentro dele.
+                Gasto p = new Gasto();
                 p.name = name;
                 p.id = id;
                 p.price = price;

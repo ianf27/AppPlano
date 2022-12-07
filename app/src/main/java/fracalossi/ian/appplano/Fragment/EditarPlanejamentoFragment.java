@@ -5,12 +5,15 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ScrollView;
 
+import fracalossi.ian.appplano.Model.HomeViewModel;
 import fracalossi.ian.appplano.R;
 
 /**
@@ -29,13 +32,15 @@ public class EditarPlanejamentoFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    HomeViewModel homeViewModel;
+
     public EditarPlanejamentoFragment() {
         // Required empty public constructor
     }
 
 
     public static EditarPlanejamentoFragment newInstance() {
-        new EditarPlanejamentoFragment();
+        return new EditarPlanejamentoFragment();
     }
 
 
@@ -59,15 +64,9 @@ public class EditarPlanejamentoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //looping para escrever cada slider de definir porcentagem de categoria
-        // esse 3 será substituído pela quantidade de categorias q a pessoa tiver
-        for (int i=0; i<3; i++) {
-            View v = getLayoutInflater().inflate(R.layout.categoria_sliders_item, null);
 
-            //será necesário usar um findviewbyid para alterar os text view do item
 
-            ScrollView sv = view.findViewById(R.id.svCategorias);
-            sv.addView(v);
-        }
+
+
     }
 }

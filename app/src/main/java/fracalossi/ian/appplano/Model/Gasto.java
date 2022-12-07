@@ -4,7 +4,7 @@ package fracalossi.ian.appplano.Model;
  * Classe para representar um produto
  * PRODUTO = GASTO
  */
-public class Product {
+public class Gasto {
 
     public String id; // id do produto
     public String name; // nome do produto

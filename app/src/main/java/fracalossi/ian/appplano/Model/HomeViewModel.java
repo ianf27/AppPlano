@@ -11,6 +11,7 @@ import androidx.paging.PagingConfig;
 import androidx.paging.PagingData;
 import androidx.paging.PagingLiveData;
 
+import fracalossi.ian.appplano.R;
 import kotlinx.coroutines.CoroutineScope;
 
 /**
@@ -18,21 +19,32 @@ import kotlinx.coroutines.CoroutineScope;
  */
 public class HomeViewModel extends AndroidViewModel {
 
-    LiveData<PagingData<Product>> productsLd;
+    LiveData<PagingData<Gasto>> gastosLd;
+
+    int navigationOpSelected = R.id.HomeViewOp;
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
 
         // Abaixo configuramos o uso da biblioteca de paginação Paging 3, assim como foi feito na
         // atividade Galeria Pública
-        ProductsRepository productsRepository = new ProductsRepository(getApplication());
+        GastosRepository gastosRepository = new GastosRepository(getApplication());
         CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
-        Pager<Integer, Product> pager = new Pager(new PagingConfig(10), () -> new ProductsPagingSource(productsRepository));
-        productsLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+        Pager<Integer, Gasto> pager = new Pager(new PagingConfig(10), () -> new GastosPagingSource(gastosRepository));
+        gastosLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+
     }
 
-    public LiveData<PagingData<Product>> getProductsLd() {
-        return productsLd;
+    public int getNavigationOpSelected() {
+        return navigationOpSelected;
+    }
+
+    public void setNavigationOpSelected(int navigationOpSelected) {
+        this.navigationOpSelected = navigationOpSelected;
+    }
+
+    public LiveData<PagingData<Gasto>> getGastosLd() {
+        return gastosLd;
     }
 
 }

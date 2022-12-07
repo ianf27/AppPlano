@@ -3,7 +3,6 @@ package fracalossi.ian.appplano.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,13 +11,13 @@ import androidx.recyclerview.widget.DiffUtil;
 
 
 import fracalossi.ian.appplano.Activity.HomeActivity;
-import fracalossi.ian.appplano.Model.Product;
+import fracalossi.ian.appplano.Model.Gasto;
 import fracalossi.ian.appplano.R;
 
-public class MyAdapter extends PagingDataAdapter<Product, MyViewHolder> {
+public class MyAdapter extends PagingDataAdapter<Gasto, MyViewHolder> {
     HomeActivity homeActivity;
 
-    public MyAdapter(HomeActivity homeActivity, @NonNull DiffUtil.ItemCallback<Product> diffCallback) {
+    public MyAdapter(HomeActivity homeActivity, @NonNull DiffUtil.ItemCallback<Gasto> diffCallback) {
         super(diffCallback);
         this.homeActivity = homeActivity;
     }
@@ -40,15 +39,15 @@ public class MyAdapter extends PagingDataAdapter<Product, MyViewHolder> {
      */
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Product product = this.getItem(position);
+        Gasto gasto = this.getItem(position);
 
         // preenche o campo de nome
         TextView tvNameList = holder.itemView.findViewById(R.id.tvNameGastoList);
-        tvNameList.setText(product.name);
+        tvNameList.setText(gasto.name);
 
         // preenche o campo de preço
         TextView tvPiceList = holder.itemView.findViewById(R.id.tvPriceGastoList);
-        tvPiceList.setText(product.price);
+        tvPiceList.setText(gasto.price);
 
 
 

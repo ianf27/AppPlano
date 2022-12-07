@@ -40,8 +40,7 @@ public class PerfilFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static PerfilFragment newInstance() {
-        new PerfilFragment();
-        return null;
+        return new PerfilFragment();
     }
 
 

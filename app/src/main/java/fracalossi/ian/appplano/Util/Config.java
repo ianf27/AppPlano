@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
 public class Config {
 
     // endereço base do servidor web
-    public static String PRODUCTS_APP_URL = "172.19.47.32/AppPlanoPHP";
+    public static String GASTO_APP_URL = "172.19.47.32/AppPlanoPHP";
 
     /**
      * Salva o login no espaço reservado da app

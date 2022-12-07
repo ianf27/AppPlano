@@ -1,32 +1,16 @@
 package fracalossi.ian.appplano.Activity;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import fracalossi.ian.appplano.Model.AddGastoViewModel;
 import fracalossi.ian.appplano.R;
@@ -44,8 +28,8 @@ public class AddGastoActivity extends AppCompatActivity {
         AddGastoViewModel addGastoViewModel = new ViewModelProvider(this).get(AddGastoViewModel.class);
 
         // Quando o usuário clicar no botão adicionar...
-        Button btnAddProduct = findViewById(R.id.btnAddProduct);
-        btnAddProduct.setOnClickListener(new View.OnClickListener() {
+        Button btnAddGasto = findViewById(R.id.btnAddGasto);
+        btnAddGasto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -106,14 +90,14 @@ public class AddGastoActivity extends AppCompatActivity {
                 }
 
 
-                // O ViewModel possui o método addProduct, que envia os dados do novo produto para o
+                // O ViewModel possui o método addGasto, que envia os dados do novo produto para o
                 // servidor web.O servidor web recebe esses dados e cadastra um novo produto. Se o
                 // produto foi cadastrado com sucesso, a app recebe o valor true. Se não o servidor
                 // retorna o valor false.
                 //
-                // O método de addProduct retorna um LiveData, que na prática é um container que avisa
+                // O método de addGasto retorna um LiveData, que na prática é um container que avisa
                 // quando o resultado do servidor chegou.
-                LiveData<Boolean> resultLD = addGastoViewModel.addProduct(name, price, data, categoria);
+                LiveData<Boolean> resultLD = addGastoViewModel.addGasto(name, price, data, categoria);
 
                 // Aqui nós observamos o LiveData. Quando o servidor responder, o resultado indicando
                 // se o cadastro do produto deu certo ou não será guardado dentro do LiveData. Neste momento o
