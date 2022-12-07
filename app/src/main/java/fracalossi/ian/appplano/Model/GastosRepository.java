@@ -146,11 +146,11 @@ public class GastosRepository {
      * Método que cria uma requisição HTTP para cadastrar um novo produto junto ao servidor web.
      * @param name nome do produto
      * @param price preço do produto
-     * @param description descrição do produto
-     * @param imgLocation endereço do arquivo que contém a imagem do produto
+     * @param categoria categoria do produto
+     * @param data data do produto
      * @return true se o produto foi cadastrado junto ao servidor, false caso contrário
      */
-    public boolean addGasto(String name, String price, String description, String imgLocation) {
+    public boolean addGasto(String name, String price, String categoria, String data) {
 
         // Para cadastrar um produto, é preciso estar logado. Então primeiro otemos o login e senha
         // salvos na app.
@@ -161,8 +161,8 @@ public class GastosRepository {
         HttpRequest httpRequest = new HttpRequest(Config.GASTO_APP_URL + "criar_produto.php", "POST", "UTF-8");
         httpRequest.addParam("nome", name);
         httpRequest.addParam("preco", price);
-        httpRequest.addParam("descricao", description);
-        httpRequest.addFile("img", new File(imgLocation));
+        httpRequest.addParam("categoria", categoria);
+        httpRequest.addParam("data", data);
 
         // Para esta ação, é preciso estar logado. Então na requisição HTTP setamos o login e senha do
         // usuário. Ao executar a requisição, o login e senha do usuário serão enviados ao servidor web,
