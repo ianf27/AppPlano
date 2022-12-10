@@ -88,7 +88,7 @@ public class CadastroActivity extends AppCompatActivity {
             }
 
 
-            EditText etNewPassword =  findViewById(R.id.etPassword);
+            EditText etNewPassword =  findViewById(R.id.etSenhaCadastro);
             final String newPassword = etNewPassword.getText().toString();
             if(newPassword.isEmpty()) {
                Toast.makeText(CadastroActivity.this, "Campo de SENHA não preenchido", Toast.LENGTH_LONG).show();

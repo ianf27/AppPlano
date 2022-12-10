@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,32 +32,20 @@ public class HomeFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String mes = "mes";
-    private static final String ano = "ano";
+    private static final String N_MESES = "nMeses";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int nMeses;
 
     public HomeFragment() {
         // Required empty public constructor
     }
 
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment HomeFragment.
-     */
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(String mes, String ano) {
+    public static HomeFragment newInstance(int nMeses) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
-        args.putString(mes, mes);
-        args.putString(ano, ano);
+        args.putInt(N_MESES, nMeses);
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,8 +54,7 @@ public class HomeFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(mes);
-            mParam2 = getArguments().getString(ano);
+            nMeses = getArguments().getInt(N_MESES);
         }
     }
 
@@ -80,32 +68,31 @@ public class HomeFragment extends Fragment {
     // FAZER ON VIEW CREATED
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        ViewPager2 viewPager2 = view.findViewById(R.id.vpHome);
 
+        SampleAdapter sampleAdapter = new SampleAdapter(this,nMeses);
+
+        viewPager2.setAdapter(sampleAdapter);
     }
 
     class SampleAdapter extends FragmentStateAdapter{
 
-        public SampleAdapter(@NonNull FragmentActivity fragmentActivity) {
-            super(fragmentActivity);
-        }
-
-        public SampleAdapter(@NonNull Fragment fragment) {
+        int totalMeses;
+        public SampleAdapter(@NonNull Fragment fragment, int nMeses) {
             super(fragment);
+            this.totalMeses = nMeses;
         }
 
-        public SampleAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
-            super(fragmentManager, lifecycle);
-        }
 
         @NonNull
         @Override
         public Fragment createFragment(int position) {
-            return null;
+            return MonthExpensesFragment.newInstance(position);
         }
 
         @Override
         public int getItemCount() {
-            return 0;
+            return totalMeses;
         }
     }
 
