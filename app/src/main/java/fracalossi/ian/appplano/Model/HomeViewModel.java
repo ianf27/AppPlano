@@ -20,6 +20,7 @@ import kotlinx.coroutines.CoroutineScope;
 public class HomeViewModel extends AndroidViewModel {
 
     LiveData<PagingData<Gasto>> gastosLd;
+    GastosRepository gastosRepository;
 
     int navigationOpSelected = R.id.HomeViewOp;
 
@@ -28,10 +29,8 @@ public class HomeViewModel extends AndroidViewModel {
 
         // Abaixo configuramos o uso da biblioteca de paginação Paging 3, assim como foi feito na
         // atividade Galeria Pública
-        GastosRepository gastosRepository = new GastosRepository(getApplication());
-        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
-        Pager<Integer, Gasto> pager = new Pager(new PagingConfig(10), () -> new GastosPagingSource(gastosRepository));
-        gastosLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
+        gastosRepository = new GastosRepository(getApplication());
+
 
     }
 
@@ -43,7 +42,10 @@ public class HomeViewModel extends AndroidViewModel {
         this.navigationOpSelected = navigationOpSelected;
     }
 
-    public LiveData<PagingData<Gasto>> getGastosLd() {
+    public LiveData<PagingData<Gasto>> getGastosLd(int mes) {
+        CoroutineScope viewModelScope = ViewModelKt.getViewModelScope(this);
+        Pager<Integer, Gasto> pager = new Pager(new PagingConfig(10), () -> new GastosPagingSource(gastosRepository, mes));
+        gastosLd = PagingLiveData.cachedIn(PagingLiveData.getLiveData(pager), viewModelScope);
         return gastosLd;
     }
 

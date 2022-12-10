@@ -15,6 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import fracalossi.ian.appplano.R;
 
 
@@ -25,37 +28,19 @@ import fracalossi.ian.appplano.R;
  */
 public class HomeFragment extends Fragment {
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
-    }
-
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String N_MESES = "nMeses";
-
-    // TODO: Rename and change types of parameters
-    private int nMeses;
-
     public HomeFragment() {
         // Required empty public constructor
     }
 
     // TODO: Rename and change types and number of parameters
-    public static HomeFragment newInstance(int nMeses) {
+    public static HomeFragment newInstance() {
         HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putInt(N_MESES, nMeses);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            nMeses = getArguments().getInt(N_MESES);
-        }
     }
 
     @Override
@@ -70,19 +55,16 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ViewPager2 viewPager2 = view.findViewById(R.id.vpHome);
 
-        SampleAdapter sampleAdapter = new SampleAdapter(this,nMeses);
+        SampleAdapter sampleAdapter = new SampleAdapter(this);
 
         viewPager2.setAdapter(sampleAdapter);
     }
 
     class SampleAdapter extends FragmentStateAdapter{
 
-        int totalMeses;
-        public SampleAdapter(@NonNull Fragment fragment, int nMeses) {
+        public SampleAdapter(@NonNull Fragment fragment) {
             super(fragment);
-            this.totalMeses = nMeses;
         }
-
 
         @NonNull
         @Override
@@ -92,7 +74,11 @@ public class HomeFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return totalMeses;
+            java.util.Date date= new Date();
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            int month = cal.get(Calendar.MONTH);
+            return month;
         }
     }
 

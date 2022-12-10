@@ -51,6 +51,7 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+        bottomNavigationView.setSelectedItemId(R.id.HomeViewOp);
 
     }
 

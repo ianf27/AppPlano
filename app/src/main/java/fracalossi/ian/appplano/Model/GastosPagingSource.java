@@ -17,9 +17,11 @@ public class GastosPagingSource extends ListenableFuturePagingSource<Integer, Ga
     GastosRepository gastosRepository;
 
     Integer initialLoadSize = 0;
+    int mes;
 
-    public GastosPagingSource(GastosRepository gastosRepository) {
+    public GastosPagingSource(GastosRepository gastosRepository, int mes) {
         this.gastosRepository = gastosRepository;
+        this.mes = mes;
     }
 
     /**
@@ -79,7 +81,7 @@ public class GastosPagingSource extends ListenableFuturePagingSource<Integer, Ga
             public LoadResult<Integer, Gasto> call() {
                 List<Gasto> gastoListsList = null;
                 // envia uma requisição para o servidor web pedindo por uma nova página de dados (bloco de produtos)
-                gastoListsList = gastosRepository.loadGastos(loadParams.getLoadSize(), finalOffSet);
+                gastoListsList = gastosRepository.loadGastos(loadParams.getLoadSize(), finalOffSet, mes);
                 Integer nextKey = null;
                 if(gastoListsList.size() >= loadParams.getLoadSize()) {
                     nextKey = finalNextPageNumber + 1;

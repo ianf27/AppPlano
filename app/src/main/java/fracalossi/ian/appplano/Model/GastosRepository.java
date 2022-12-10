@@ -221,7 +221,7 @@ public class GastosRepository {
      * @param offSet a posição a partir da qual a página de produtos deve começar
      * @return lista de produtos
      */
-    public List<Gasto> loadGastos(Integer limit, Integer offSet) {
+    public Gastos loadGastos(Integer limit, Integer offSet, int mes) {
 
         // cria a lista de produtos incicialmente vazia, que será retornada como resultado
         List<Gasto> gastoList = new ArrayList<>();
@@ -235,6 +235,7 @@ public class GastosRepository {
         HttpRequest httpRequest = new HttpRequest(Config.GASTO_APP_URL +"pegar_produtos.php", "GET", "UTF-8");
         httpRequest.addParam("limit", limit.toString());
         httpRequest.addParam("offset", offSet.toString());
+        httpRequest.addParam("mes", String.valueOf(mes));
 
         // Para esta ação, é preciso estar logado. Então na requisição HTTP setamos o login e senha do
         // usuário. Ao executar a requisição, o login e senha do usuário serão enviados ao servidor web,
@@ -281,9 +282,14 @@ public class GastosRepository {
             // produtos a ser retornada como resultado.
             if(success == 1) {
 
+                String mesEscolhido = jsonObject.getString("mes");
+
+                Gastos gastos = new Gastos();
+                gastos.mes = mesEscolhido;
+
                 // A chave produtos é um array de objetos do tipo json (JSONArray), onde cada um desses representa
                 // um produto
-                JSONArray jsonArray = jsonObject.getJSONArray("produtos");
+                JSONArray jsonArray = jsonObject.getJSONArray("gastos");
 
                 // Cada elemento do JSONArray é um JSONObject que guarda os dados de um produto
                 for(int i = 0; i < jsonArray.length(); i++) {
@@ -293,14 +299,17 @@ public class GastosRepository {
 
                     // Obtemos os dados de um produtos via JSONObject
                     String pid = jGasto.getString("id");
-                    String name = jGasto.getString("nome");
-                    String price = jGasto.getString("preco");
+                    String name = jGasto.getString("gasto");
+                    String price = jGasto.getString("valor");
+                    String data = jGasto.getString("data");
+                    String mes = jGasto.getString("mes");
 
                     // Criamo um objeto do tipo Gasto para guardar esses dados
                     Gasto gasto = new Gasto();
                     gasto.id = pid;
                     gasto.name = name;
                     gasto.price = price;
+                    gasto.createdAt = data;
 
                     // Adicionamos o objeto gasto na lista de produtos
                     gastoList.add(gasto);
